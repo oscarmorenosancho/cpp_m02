@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 12:36:33 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/17 12:46:27 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/17 13:43:51 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ private:
 	static int	fractBits;
 public:
 	Fixed();
-	Fixed(Fixed& b);
-	Fixed& operator=(Fixed& b);
+	Fixed(const Fixed& b);
+	Fixed& operator=(const Fixed& b);
 	~Fixed();
 	int getRawBits( void ) const;
 	void setRawBits( int const raw );
