@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 12:35:57 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/17 13:49:20 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/19 09:57:26 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ Fixed const d( b );
 
 a = Fixed( 1234.4321f );
 
-std::cout << "a is " << a.toFloat() << std::endl;
-std::cout << "b is " << b.toFloat() << std::endl;
-std::cout << "c is " << c.toFloat() << std::endl;
-std::cout << "d is " << d.toFloat() << std::endl;
+std::cout << "a is " << a << std::endl;
+std::cout << "b is " << b << std::endl;
+std::cout << "c is " << c << std::endl;
+std::cout << "d is " << d << std::endl;
 
 std::cout << "a is " << a.toInt() << " as integer" << std::endl; 
 std::cout << "b is " << b.toInt() << " as integer" << std::endl; 

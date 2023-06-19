@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 11:20:25 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/17 13:44:32 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/19 09:58:04 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int Fixed::toInt( void ) const
 	return (getRawBits());
 }
 
-std::ostream& operator<<(std::ostream& os, Fixed& fx)
+std::ostream& operator<<(std::ostream& os, const Fixed& fx)
 {
 	os << fx.toFloat();
 	return (os);

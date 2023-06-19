@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 12:36:33 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/17 13:44:07 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/19 09:57:14 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ public:
 	int toInt( void ) const;
 };
 
-std::ostream& operator<<(std::ostream& os, Fixed& fx);
+std::ostream& operator<<(std::ostream& os, const Fixed& fx);
 
 #endif //__FIXED_HPP__
