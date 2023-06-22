@@ -6,12 +6,13 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 11:20:25 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/19 09:58:04 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/22 12:36:57 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
+#include <cmath>
 #include "Fixed.hpp"
 
 int	Fixed::fractBits = 8;
@@ -31,13 +32,13 @@ Fixed::Fixed(const Fixed& b)
 Fixed::Fixed::Fixed(int i)
 {
 	std::cout << "Int constructor called" << std::endl;
-	value = i;
+	value = i * (2 << (fractBits - 1));
 }
 
 Fixed::Fixed(float f)
 {
 	std::cout << "Float constructor called" << std::endl;
-	value = f;
+	value = std::roundf(f * (2 << (fractBits - 1)));
 }
 
 Fixed& Fixed::operator=(const Fixed& b)
@@ -64,12 +65,14 @@ void Fixed::setRawBits( int const raw )
 
 float Fixed::toFloat( void ) const
 {
-	return (getRawBits());
+	float	f;
+	f = getRawBits() * 1.0 / (2 << (fractBits - 1));
+	return (f);
 }
 
 int Fixed::toInt( void ) const
 {
-	return (getRawBits());
+	return (getRawBits() / (2 << (fractBits - 1)));
 }
 
 std::ostream& operator<<(std::ostream& os, const Fixed& fx)
