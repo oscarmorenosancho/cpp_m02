@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 12:35:57 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/22 15:40:04 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/22 16:03:22 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ a = Fixed( -1234.4321f );
 try
 {
 	//a /= Fixed();
-	a = e / Fixed();
+	e = e + d;
 }
 catch(const std::exception& e)
 {
@@ -36,11 +36,13 @@ std::cout << "a is " << a << std::endl;
 std::cout << "b is " << b << std::endl;
 std::cout << "c is " << c << std::endl;
 std::cout << "d is " << d << std::endl;
+std::cout << "e is " << d << std::endl;
 
 std::cout << "a is " << a.toInt() << " as integer" << std::endl; 
 std::cout << "b is " << b.toInt() << " as integer" << std::endl; 
 std::cout << "c is " << c.toInt() << " as integer" << std::endl; 
 std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+std::cout << "e is " << d.toInt() << " as integer" << std::endl;
 
 return 0; 
 }
