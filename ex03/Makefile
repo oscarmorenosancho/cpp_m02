@@ -6,18 +6,21 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 09:42:47 by omoreno-          #+#    #+#              #
-#    Updated: 2023/06/23 14:26:18 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/06/23 15:53:33 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME:= Fixed
+NAME:= BSP
 
-CLASSSRC	:=	Fixed.cpp
+CLASSSRC	:=	Fixed.cpp Point.cpp
+
+EXTRASRC	:=	bsp.cpp
 
 MAINSRC		:=	main.cpp
 
 HEADER		:=	$(CLASSSRC:.cpp=.hpp)
 CLASSOBJ	:=	$(CLASSSRC:.cpp=.o)
+EXTRAOBJ	:=	$(EXTRASRC:.cpp=.o)
 MAINOBJ		:=	$(MAINSRC:.cpp=.o)
 
 CC			:=	@c++
@@ -30,12 +33,13 @@ all : $(NAME)
 	@echo "Compiling" $@
 	${CC} ${CFLAGS} -c $< -o $@
 
-$(NAME) : ${CLASSOBJ} ${MAINOBJ} ${HEADER} Makefile
+$(NAME) : ${CLASSOBJ} ${EXTRAOBJ} ${MAINOBJ} ${HEADER} Makefile
 	@echo "Linking" $@
-	${CC} ${CFLAGS} ${CLASSOBJ} ${MAINOBJ} -o $@
+	${CC} ${CFLAGS} ${EXTRAOBJ} ${CLASSOBJ} ${MAINOBJ} -o $@
 
 clean :
 	$(RM) $(CLASSOBJ)
+	$(RM) $(EXTRAOBJ)
 	$(RM) $(MAINOBJ)
 	@echo "Cleaned objects"
 

@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 12:36:33 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/23 14:41:50 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/23 16:03:32 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,10 @@ public:
 	static Fixed&		max(Fixed& a, Fixed& b);
 	// • A static member function max that takes as parameters two references to constant fixed-point numbers, and returns a reference to the greatest one.
 	static const Fixed&	max(const Fixed& a, const Fixed& b);
+	Fixed Q_rsqrt() const;
 };
 
 std::ostream& operator<<(std::ostream& os, const Fixed& fx);
+float Q_rsqrt( float number );
 
 #endif //__FIXED_HPP__

@@ -6,23 +6,23 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 09:42:47 by omoreno-          #+#    #+#              #
-#    Updated: 2023/06/17 12:51:42 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/06/23 14:26:42 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME:= MyFirstFixed
 
-CLASSSRC:= 	Fixed.cpp
+CLASSSRC	:=	Fixed.cpp
 
-MAINSRC :=	main.cpp
+MAINSRC		:=	main.cpp
 
-CLASSOBJ := $(CLASSSRC:.cpp=.o)
-HEADER := 	$(CLASSSRC:.cpp=.hpp)
-MAINOBJ := 	$(MAINSRC:.cpp=.o)
+HEADER		:=	$(CLASSSRC:.cpp=.hpp)
+CLASSOBJ	:=	$(CLASSSRC:.cpp=.o)
+MAINOBJ		:=	$(MAINSRC:.cpp=.o)
 
-CC	:= 	@c++
-RM	= 	@rm -f
-CFLAGS := -Wall -Werror -Wextra -std=c++98
+CC			:=	@c++
+RM			:=	@rm -f
+CFLAGS		:=	-Wall -Werror -Wextra -std=c++98
 
 all : $(NAME)
 
@@ -37,8 +37,6 @@ $(NAME) : ${CLASSOBJ} ${MAINOBJ} ${HEADER} Makefile
 clean :
 	$(RM) $(CLASSOBJ)
 	$(RM) $(MAINOBJ)
-	$(RM) *.txt
-	$(RM) *.txt.replace
 	@echo "Cleaned objects"
 
 fclean : clean
