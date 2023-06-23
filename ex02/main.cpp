@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 12:35:57 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/22 16:03:22 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/23 12:52:54 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,18 @@
 #include "Fixed.hpp"
 
 int main( void ) {
+	Fixed a;
+	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 
-Fixed a;
-Fixed e( 42.42f );
-Fixed const b( 10 );
-Fixed const c( 42.42f );
-Fixed const d( b );
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
 
-a = Fixed( -1234.4321f );
-try
-{
-	//a /= Fixed();
-	e = e + d;
-}
-catch(const std::exception& e)
-{
-	std::cerr << e.what() << '\n';
-}
+	std::cout << b << std::endl;
 
-std::cout << "a is " << a << std::endl;
-std::cout << "b is " << b << std::endl;
-std::cout << "c is " << c << std::endl;
-std::cout << "d is " << d << std::endl;
-std::cout << "e is " << d << std::endl;
-
-std::cout << "a is " << a.toInt() << " as integer" << std::endl; 
-std::cout << "b is " << b.toInt() << " as integer" << std::endl; 
-std::cout << "c is " << c.toInt() << " as integer" << std::endl; 
-std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-std::cout << "e is " << d.toInt() << " as integer" << std::endl;
-
-return 0; 
+	std::cout << Fixed::max( a, b ) << std::endl;
+	
+	return 0; 
 }

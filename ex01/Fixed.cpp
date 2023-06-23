@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 11:20:25 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/22 12:36:57 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/23 12:08:46 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	Fixed::fractBits = 8;
 
 Fixed::Fixed()
 {
-	value = 0;
 	std::cout << "Default constructor called" << std::endl;
+	value = 0;
 }
 
 Fixed::Fixed(const Fixed& b)
@@ -41,16 +41,16 @@ Fixed::Fixed(float f)
 	value = std::roundf(f * (2 << (fractBits - 1)));
 }
 
+Fixed::~Fixed()
+{
+	std::cout << "Destructor called" << std::endl;
+}
+
 Fixed& Fixed::operator=(const Fixed& b)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	value = b.getRawBits();
 	return (*this);
-}
-
-Fixed::~Fixed()
-{
-	std::cout << "Destructor called" << std::endl;
 }
 
 int Fixed::getRawBits( void ) const
