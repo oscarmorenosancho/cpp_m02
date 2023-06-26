@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 12:35:57 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/26 19:45:17 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/26 19:54:58 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int main( void ) {
 	Point pP(Fixed(1.48f), Fixed(1.48f));
 	Point pU;
 
+	std::cout << "p module ** 2 = " << pP.getModuleSqr() << std::endl;
+	std::cout << "p module = " << pP.getModule() << std::endl;
 	pU = pP.unitary();
+	std::cout << "u module = " << pU.getModule() << std::endl;
 
 	std::cout << "a= " << pA;
 	std::cout << "b= " << pB;
