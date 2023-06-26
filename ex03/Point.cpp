@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 14:28:01 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/23 15:51:12 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/26 19:45:57 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ Point::Point(const Fixed fX, const Fixed fY) : x(fX), y(fY)
 {
 }
 
-Point::Point(const Point& b)
+Point::Point(const Point& b) : x(b.getX()), y(b.getY())
 {
-	*this = b;
+
 }
 
 Point::~Point()
@@ -33,9 +33,13 @@ Point::~Point()
 
 }
 
-Point	Point::operator=(const Point& b)
+Point&	Point::operator=(const Point& b)
 {
-	return (Point(b.getX(), b.getY()));
+	Fixed* px = (Fixed *)&x;
+	Fixed* py = (Fixed *)&y;
+	px->setRawBits(b.getX().getRawBits());
+	py->setRawBits(b.getY().getRawBits());
+	return (*this);
 }
 
 const Fixed&	Point::getX( ) const
@@ -51,6 +55,21 @@ const Fixed&	Point::getY( ) const
 const Fixed	Point::getModuleSqr() const
 {
 	return ((x * x) + (y * y));
+}
+
+const Fixed	Point::getModule() const
+{
+	return (Fixed(1.0f/getModuleSqr().Q_rsqrt().toFloat()));
+}
+
+Point	Point::unitary() const
+{
+	float fx = getX().toFloat();
+	float fy = getY().toFloat();
+	float modSq = fx * fx + fy * fy;
+	float invMod = Q_rsqrt(modSq);
+	Point aux(fx*invMod, fy*invMod);
+	return (aux);
 }
 
 bool	Point::operator>(const Point& b) const
@@ -75,45 +94,46 @@ bool	Point::operator<=(const Point& b) const
 
 bool	Point::operator==(const Point& b) const
 {
-	return (getModuleSqr() == b.getModuleSqr());
+	return ((getX() == b.getX()) && (getY() == b.getY()));
 }
 
 bool	Point::operator!=(const Point& b) const
 {
-	return (getModuleSqr() != b.getModuleSqr());
-}
-
-Point&	Point::operator+=(const Point& b)
-{
-	Point aux(x + b.getX(), y + b.getY());
-	*this = aux;
-	return (*this);
-}
-
-Point&	Point::operator-=(const Point& b)
-{
-	Point aux(x - b.getX(), y - b.getY());
-	*this = aux;
-	return (*this);
+	return ((getX() != b.getX()) || (getY() != b.getY()));
 }
 
 Point	Point::operator+(const Point& b) const
 {
-	Point aux(*this);
-	aux += b;
+	Point aux((this->getX() + b.getX()), (this->getY() + b.getY()));
 	return (aux);
 }
 
 Point	Point::operator-(const Point& b) const
 {
-	Point aux(*this);
-	aux -= b;
+	Point aux((this->getX() - b.getX()), (this->getY() - b.getY()));
 	return (aux);
 }
 
 Fixed	Point::operator*(const Point& b) const
 {
 	return ((x * b.getX()) + (y * b.getY()));
+}
+
+Point	Point::perpendicular() const
+{
+	Point aux(getY(), - getX());
+	return (aux);
+}
+
+Point&			Point::operator+=(const Point& b)
+{
+	*this = *this + b;
+	return (*this);
+}
+Point&			Point::operator-=(const Point& b)
+{
+	*this = *this - b;
+	return (*this);
 }
 
 std::ostream& operator<<(std::ostream& os, const Point& p)

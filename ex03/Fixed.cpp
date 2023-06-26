@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 11:20:25 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/23 16:05:40 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/26 17:28:24 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,36 +20,30 @@ int	Fixed::fractBits = 8;
 
 Fixed::Fixed()
 {
-	std::cout << "Default constructor called" << std::endl;
 	value = 0;
 }
 
 Fixed::Fixed(const Fixed& b)
 {
-	std::cout << "Copy constructor called" << std::endl;
 	*this = b;
 }
 
 Fixed::Fixed::Fixed(int i)
 {
-	std::cout << "Int constructor called" << std::endl;
 	value = i * (2 << (fractBits - 1));
 }
 
 Fixed::Fixed(float f)
 {
-	std::cout << "Float constructor called" << std::endl;
 	value = std::roundf(f * (2 << (fractBits - 1)));
 }
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
 }
 
 Fixed& Fixed::operator=(const Fixed& b)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
 	value = b.getRawBits();
 	return (*this);
 }
@@ -145,6 +139,13 @@ Fixed	Fixed::operator-(const Fixed& b) const
 {
 	Fixed aux(*this);
 	aux -= b;
+	return (aux);
+}
+
+Fixed	Fixed::operator-() const
+{
+	Fixed aux(*this);
+	aux = Fixed(0.0f) - aux;
 	return (aux);
 }
 

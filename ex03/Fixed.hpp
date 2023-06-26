@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 12:36:33 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/23 16:03:32 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/26 17:28:12 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ public:
 	Fixed&	operator/=(const Fixed& b);
 	Fixed	operator+(const Fixed& b) const;
 	Fixed	operator-(const Fixed& b) const;
+	Fixed	operator-() const;
 	Fixed	operator*(const Fixed& b) const;
 	Fixed	operator/(const Fixed& b) const;
 	//The increment/decrement operator (prefix)
