@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 11:20:25 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/26 15:36:30 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/27 11:37:08 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,13 @@ Fixed	Fixed::operator-(const Fixed& b) const
 	return (aux);
 }
 
+Fixed	Fixed::operator-() const
+{
+	Fixed aux(*this);
+	aux = Fixed(0.0f) - aux;
+	return (aux);
+}
+
 Fixed	Fixed::operator*(const Fixed& b) const
 {
 	Fixed aux(*this);
@@ -214,9 +221,30 @@ const Fixed&	Fixed::max(const Fixed& a, const Fixed& b)
 		return (a);
 	return (b);
 }
+Fixed Fixed::Q_rsqrt() const
+{
+	return (Fixed(::Q_rsqrt(toFloat())));
+}
 
 std::ostream& operator<<(std::ostream& os, const Fixed& fx)
 {
 	os << fx.toFloat();
 	return (os);
+}
+
+float Q_rsqrt( float number )
+{
+	long i;
+	float x2, y;
+	const float threehalfs = 1.5F;
+
+	x2 = number * 0.5F;
+	y  = number;
+	i  = * ( long * ) &y;                       // evil floating point bit level hacking
+	i  = 0x5f3759df - ( i >> 1 );               // what the fuck?
+	y  = * ( float * ) &i;
+	y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
+	// y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed
+
+	return y;
 }
